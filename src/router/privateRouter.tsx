@@ -1,6 +1,5 @@
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import { FC, PropsWithChildren, useEffect } from "react";
 
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const PrivateRouter: FC<PropsWithChildren> = ({ children }) => {

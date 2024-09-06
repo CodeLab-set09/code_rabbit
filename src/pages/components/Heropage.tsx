@@ -1,4 +1,3 @@
-import { BsStars } from "react-icons/bs";
 import Button from "../../static/Button";
 import backImg from "../../../public/hero.png";
 
