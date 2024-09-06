@@ -1,12 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import LayoutScreen from "../static/LayoutScreen";
-import UserLayout from "../static/userLayout";
-import AuthLayout from "../static/AuthLayloat";
-import Register from "../page/auth/Registration";
-import Login from "../page/auth/LoginScreen";
-import LandingScreen from "../page/screen/LandingScreen";
-import PrivateRouter from "./privateRouter";
-import HomeScreen from "../page/home/HomeScreen";
 
 export const mainRouter = createBrowserRouter([
   {
