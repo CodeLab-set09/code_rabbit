@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 // import logo from "../../../assets/mainLogo.png";
 import Input from "../../reuse/Input";
 import PasswordInput from "../../reuse/PasswordIput";
@@ -9,6 +9,7 @@ import Button from "../../reuse/Button";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [state, setState] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -17,7 +18,7 @@ const Login = () => {
   const handleSubmit = () => {
     // e.preventDefault();
     setLoading(true);
-    // const val = { email: state, password };
+    const val = { email: state, password };
   };
 
   return (
