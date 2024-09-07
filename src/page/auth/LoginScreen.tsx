@@ -26,7 +26,7 @@ const Login = () => {
       <Toaster position="top-center" reverseOrder={true} />
       <div className="mb-10 text-center flex items-center w-full flex-col">
         <Link to="/">
-          <img className="mb-5 w-56 h-28 object-contain" src={logo} />
+          <img className="mb-5  h-24 object-contain" src={logo} />
         </Link>
         <div className="text-[26px] font-bold mb-3 text-black">
           Welcome Back
