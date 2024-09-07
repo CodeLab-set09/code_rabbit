@@ -1,10 +1,10 @@
 import { ClipLoader } from "react-spinners";
 import Button from "../../reuse/Button";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../../public/rabbit.png";
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Input from "../../reuse/Input";
 
 const Register = () => {
