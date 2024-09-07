@@ -6,6 +6,7 @@ import HomeScreen from "../page/home/HomeScreen";
 import UserLayout from "../static/userLayout";
 import Register from "../page/auth/Registration";
 import Login from "../page/auth/LoginScreen";
+import AuthLayout from "../static/AuthLayout";
 
 export const mainRouter = createBrowserRouter([
   {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import toast, { Toaster } from "react-hot-toast";
-// import logo from "../../../assets/mainLogo.png";
+import logo from "../../../public/rabbit.png";
 import Input from "../../reuse/Input";
 import PasswordInput from "../../reuse/PasswordIput";
 import Button from "../../reuse/Button";
@@ -26,9 +26,9 @@ const Login = () => {
       <Toaster position="top-center" reverseOrder={true} />
       <div className="mb-10 text-center flex items-center w-full flex-col">
         <Link to="/">
-          <div className="mb-5 w-56 h-28 object-contain">Code Rabbit</div>
+          <img className="mb-5 w-56 h-28 object-contain" src={logo} />
         </Link>
-        <div className="text-[26px] font-bold mb-3 text-blue-900">
+        <div className="text-[26px] font-bold mb-3 text-black">
           Welcome Back
         </div>
         <div className="text-[14px] -mt-3 w-[70%] leading-tight">
@@ -66,8 +66,8 @@ const Login = () => {
 
         <div>
           <Button
-            name={loading ? "Loading..." : "Student/Parent Login"}
-            className="w-[97%] bg-blue-900 text-white h-14 hover:bg-blue-800 transition-all duration-300"
+            name={loading ? "Loading..." : "Login"}
+            className="w-[97%] bg-orange-600 text-white h-14 hover:bg-orange-700 transition-all duration-300"
             type="submit"
             onClick={handleSubmit}
             icon={loading && <ClipLoader color="white" size={18} />}
@@ -90,7 +90,7 @@ const Login = () => {
       </div>
       <div className="mt-5 text-[13px]">
         Don’t have an account yet?{" "}
-        <span className="font-bold text-blue-900">
+        <span className="font-bold text-orange-600">
           <Link to="/auth">Register here</Link>
         </span>
       </div>

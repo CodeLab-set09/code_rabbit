@@ -2,7 +2,7 @@ import { ClipLoader } from "react-spinners";
 import Button from "../../reuse/Button";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-
+import logo from "../../../public/rabbit.png";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import Input from "../../reuse/Input";
@@ -22,7 +22,7 @@ const Register = () => {
       <Toaster position="top-center" reverseOrder={true} />
       <div className="mb-10 text-center flex items-center w-full flex-col">
         <Link to="/">
-          <div className="mb-5 w-56 h-28 object-contain">Code Rabbit</div>
+          <img className="mb-5 w-56 h-28 object-contain" src={logo} />
         </Link>
 
         <div className="text-[26px] font-bold mb-3">Create an Account</div>
@@ -64,7 +64,7 @@ const Register = () => {
           {/* {check ? ( */}
           <Button
             name="Register"
-            className="w-[97%] bg-blue-900 text-white h-14 hover:bg-blue-800 transition-all duration-300"
+            className="w-[97%] bg-orange-600 text-white h-14 hover:bg-orange-700 transition-all duration-300 text-[35px]"
             type="submit"
             icon={loading && <ClipLoader color="white" size={18} />}
             // onClick={handleSubmit}
@@ -77,7 +77,7 @@ const Register = () => {
       <div className="flex flex-col">
         <Button
           name="Continue with Google"
-          className="h-14 bg-red-500 hover:bg-red-600 hover:text-white  transition-all duration-300 font-medium text-[#e6e6e6] leading-tight w-[97%]text-center text-[12px] sm:text-base "
+          className="h-14 bg-red-500 hover:bg-red-600 hover:text-white  transition-all duration-300 font-medium text-[#e6e6e6] leading-tight w-[97%] text-center text-[12px] sm:text-base "
           icon={<FaGoogle />}
           onClick={() => {
             window.location.replace(`${URL}/auth/google`);
@@ -87,7 +87,7 @@ const Register = () => {
 
       <div className="mt-5 text-[13px]">
         Already have an Account?{" "}
-        <span className="font-bold text-blue-900">
+        <span className="font-bold text-orange-600">
           <Link to="/auth/login">Login here</Link>
         </span>
       </div>
