@@ -7,6 +7,7 @@ import UserLayout from "../static/userLayout";
 import Register from "../page/auth/Registration";
 import Login from "../page/auth/LoginScreen";
 import AuthLayout from "../static/AuthLayout";
+import Challenge from "../screen/level/home/Challenge";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -22,7 +23,10 @@ export const mainRouter = createBrowserRouter([
         <UserLayout />
       </PrivateRouter>
     ),
-    children: [{ index: true, element: <HomeScreen /> }],
+    children: [
+      // { index: true, element: <HomeScreen /> },
+      { index: true, element: <Challenge /> },
+    ],
   },
   {
     path: "/auth",
