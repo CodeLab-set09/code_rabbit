@@ -1,5 +1,5 @@
 import Editor from "@monaco-editor/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import img from "../../../../public/playButton.png";
 import pix from "../../../../public/idea1.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import {
   changeRotateValue2,
   changeStatePlay,
   changeSuccessState,
+  changeTestState,
   changeTiming,
   changeYValue1,
 } from "../../../global/slice";
@@ -31,16 +32,19 @@ const CodedSide = () => {
   const clue = [
     { id: 1, name: "step", bg: "bg-orange-500" },
     { id: 2, name: "turn", bg: "bg-blue-500" },
-    { id: 5, name: "up", bg: "bg-red-500" },
-    { id: 6, name: "down", bg: "bg-black" },
+    { id: 3, name: "up", bg: "bg-red-500" },
+    { id: 4, name: "down", bg: "bg-black" },
   ];
 
   const result = `turn up;\r\nstep 80;`;
 
-  const timing = useSelector((state: any) => state.timing);
+  // const timing = useSelector((state: any) => state.timing);
+  const timing = 6;
   const rotate1 = useSelector((state: any) => state.rotateValue1);
   const rotate2 = useSelector((state: any) => state.rotateValue2);
   let y = useSelector((state: any) => state.yValue1);
+  let statePlay = useSelector((state: any) => state.statePlay);
+  let stateTest = useSelector((state: any) => state.testState);
 
   const yInput: number = y;
 
@@ -72,6 +76,17 @@ const CodedSide = () => {
     return rotate2;
   });
 
+  console.log(code, statePlay);
+
+  const [value, setValue] = useState<any>([]);
+
+  useEffect(() => {
+    setValue(rotateY.concat(moveYii, moveY));
+
+    // console.log("hmm: ", value);
+  }, [statePlay]);
+
+  // console.log("hmm: ", value);
   return (
     <div className="w-full flex flex-col h-full">
       <div className="my-4 ml-2">Write your Codes Here</div>
@@ -92,29 +107,33 @@ const CodedSide = () => {
         <div
           className="border rounded-full flex p-2 items-center cursor-pointer"
           onClick={() => {
-            dispatch(changeTiming(timer));
-            dispatch(changePlay(true));
-            dispatch(changePlayRotate(rotateY.concat(rotateYii, rotateYi)));
-            dispatch(changeStatePlay(rotateY.concat(moveYii, moveY)));
-
             if (code === "") {
               dispatch(changeFaliedState(true));
             } else {
-              if (code.split("\r\n")[0].split(" ")[0] === "turn") {
+              dispatch(changeTiming(timer));
+
+              dispatch(changePlay(true));
+
+              dispatch(changeStatePlay(value));
+              dispatch(changePlayRotate(rotateY.concat(rotateYii, rotateYi)));
+
+              if (code?.split("\r\n")[0]?.split(" ")[0] === "turn") {
                 dispatch(changeRotateValue1(0));
               }
 
-              if (code.split("\r\n")[0].split(" ")[1].split(";")[0] === "up") {
+              if (
+                code?.split("\r\n")[0]?.split(" ")[1]?.split(";")[0] === "up"
+              ) {
                 dispatch(changeRotateValue2(90));
               } else if (
-                code.split("\r\n")[0].split(" ")[1].split(";")[0] === "down"
+                code?.split("\r\n")[0]?.split(" ")[1]?.split(";")[0] === "down"
               ) {
                 dispatch(changeRotateValue2(-90));
               }
 
               dispatch(
                 changeYValue1(
-                  parseInt(code.split("\r\n")[1].split(" ")[1].split(";")[0])
+                  parseInt(code?.split("\r\n")[1]?.split(" ")[1]?.split(";")[0])
                 )
               );
               dispatch(changeResultState(true));
@@ -123,11 +142,15 @@ const CodedSide = () => {
                 const timerAgain = setTimeout(() => {
                   dispatch(changeSuccessState(true));
                   clearTimeout(timerAgain);
+                  setCode("");
+                  setText("");
                 }, (Math.round(timing) + 0.5) * 1000);
               } else {
                 const timerAgain = setTimeout(() => {
                   dispatch(changeFaliedState(true));
                   clearTimeout(timerAgain);
+                  setCode("");
+                  setText("");
                 }, (Math.round(timing) + 0.5) * 1000);
               }
             }

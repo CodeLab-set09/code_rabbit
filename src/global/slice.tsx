@@ -18,7 +18,8 @@ const initialState = {
   playYi: [],
   playRotate: [],
 
-  statePlay: [],
+  statePlay: [] || 0 || null,
+  testState: [],
 };
 
 const slice = createSlice({
@@ -80,14 +81,24 @@ const slice = createSlice({
       state.statePlay = payload;
     },
 
+    changeStatePlayNull: (state: { statePlay: {} | null | number }) => {
+      state.statePlay = [0];
+    },
+
     changeSuccessState: (state, { payload }) => {
       state.successState = payload;
+    },
+
+    changeTestState: (state, { payload }) => {
+      state.testState = payload;
     },
   },
 });
 
 export const {
   changeUserID,
+  changeStatePlayNull,
+  changeTestState,
   changeUser,
   changeResultState,
   changeFaliedState,

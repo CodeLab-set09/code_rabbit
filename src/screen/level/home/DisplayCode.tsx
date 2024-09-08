@@ -6,10 +6,9 @@ import { MainCursor } from "../../../static/MainCursor";
 const Ball: FC = () => {
   const roll = useSelector((state: any) => state.playRotate);
 
-  const timing = useSelector((state: any) => state.timing);
+  //   const timing = useSelector((state: any) => state.timing);
+  const timing = 6;
   const statePlay = useSelector((state: any) => state.statePlay);
-
-  console.log(Math.round(timing));
 
   const animate: any = {
     hidden: { x: 0, y: 0, rotate: 0 },

@@ -2,10 +2,12 @@ import {
   changeFaliedState,
   changePlay,
   changePlayRotate,
-  changePlayY,
   changeReadToggle,
   changeStatePlay,
+  changeStatePlayNull,
   changeSuccessState,
+  changeTestState,
+  changeTiming,
 } from "../../../global/slice";
 import { TextEffect } from "../../../static/TextEffect";
 import CodedSide from "./CodedSide";
@@ -13,8 +15,11 @@ import DisplayCode from "./DisplayCode";
 import { MdArrowBackIos, MdClose, MdRepeat } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import rabb from "../../../../public/rabb.png";
+import { useContext } from "react";
+import { GlobalContext } from "../../../global/GlobalProvider";
 
 const Challenge = () => {
+  const { setYValue, setRotate1 }: any = useContext(GlobalContext);
   const state = useSelector((state: any) => state.faliedState);
   const read = useSelector((state: any) => state.readToggle);
   const success = useSelector((state: any) => state.successState);
@@ -47,8 +52,13 @@ const Challenge = () => {
                   onClick={() => {
                     dispatch(changeFaliedState(false));
                     dispatch(changePlay(true));
-                    dispatch(changeStatePlay([0]));
+                    dispatch(changeStatePlayNull());
                     dispatch(changePlayRotate([0]));
+                    dispatch(changeTestState([0]));
+                    dispatch(changeTiming(0));
+
+                    setYValue([0]);
+                    setRotate1([0]);
                   }}
                 >
                   <MdClose />
